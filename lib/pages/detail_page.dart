@@ -115,36 +115,6 @@ class _DetailPageState extends State<DetailPage> {
                     ),
                   ],
                 ),
-                // const SizedBox(
-                //   height: 8,
-                // ),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(
-                //     horizontal: 20,
-                //   ),
-                //   child: Column(
-                //     crossAxisAlignment: CrossAxisAlignment.start,
-                //     children: [
-                //       Text(
-                //         widget.propery.name,
-                //         style: const TextStyle(
-                //           fontSize: 24,
-                //           fontWeight: FontWeight.bold,
-                //         ),
-                //       ),
-                //       Text(
-                //         widget.propery.city,
-                //         style: const TextStyle(
-                //           fontSize: 24,
-                //           fontWeight: FontWeight.bold,
-                //         ),
-                //       ),
-                //     ],
-                //   ),
-                // ),
-                // const Divider(
-                //   thickness: 1,
-                // ),
               ],
             );
           } else {

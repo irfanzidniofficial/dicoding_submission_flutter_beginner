@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:dicoding_submission_flutter_beginner/data/property_data.dart';
 import 'package:dicoding_submission_flutter_beginner/models/property_model.dart';
