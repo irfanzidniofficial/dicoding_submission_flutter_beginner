@@ -1,7 +1,27 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-class DetailPage extends StatelessWidget {
-  const DetailPage({super.key});
+import 'package:dicoding_submission_flutter_beginner/models/property_model.dart';
+
+class DetailPage extends StatefulWidget {
+  final PropertyModel propery;
+  const DetailPage({
+    Key? key,
+    required this.propery,
+  }) : super(key: key);
+
+  @override
+  State<DetailPage> createState() => _DetailPageState();
+}
+
+class _DetailPageState extends State<DetailPage> {
+  bool _isFavorited = false;
+
+  void toggleFavorite() {
+    setState(() {
+      _isFavorited = !_isFavorited;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +31,7 @@ class DetailPage extends StatelessWidget {
           Stack(
             children: [
               Image.asset(
-                'assets/images/img_house_01.jpg',
+                widget.propery.image,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(
@@ -35,10 +55,10 @@ class DetailPage extends StatelessWidget {
                     CircleAvatar(
                       backgroundColor: Colors.grey.withOpacity(0.6),
                       child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
+                        onPressed: toggleFavorite,
+                        icon: Icon(
                           Icons.favorite,
-                          color: Colors.white,
+                          color: _isFavorited ? Colors.red : Colors.white,
                         ),
                       ),
                     )
@@ -50,53 +70,65 @@ class DetailPage extends StatelessWidget {
           const SizedBox(
             height: 8,
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 20,
-            ),
-            child: Text(
-              "Sunrise Residence Kedoya Jakarta Barat",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          const Divider(
-            thickness: 1,
-          ),
-          // Lokasi
-          const Padding(
-            padding: EdgeInsets.symmetric(
+          Padding(
+            padding: const EdgeInsets.symmetric(
               horizontal: 20,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
+                  widget.propery.name,
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  widget.propery.city,
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const Divider(
+            thickness: 1,
+          ),
+          // Lokasi
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
                   "Lokasi",
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.location_pin,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                     ),
                     Expanded(
                       child: Text(
-                        "Sunrise Residence Kedoya Jakarta Barat",
-                        style: TextStyle(
+                        widget.propery.address,
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),
@@ -104,10 +136,10 @@ class DetailPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-                Text(
+                const Text(
                   "Telusuri Peta",
                   style: TextStyle(
                     color: Colors.red,
@@ -155,8 +187,8 @@ class DetailPage extends StatelessWidget {
                     vertical: 5,
                     horizontal: 10,
                   ),
-                  child: const Text(
-                    "Rumah",
+                  child: Text(
+                    widget.propery.type,
                   ),
                 ),
               ],
@@ -172,19 +204,19 @@ class DetailPage extends StatelessWidget {
             height: 20,
           ),
           // Tinjauan Umum
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Tinjauan Umum",
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -192,13 +224,13 @@ class DetailPage extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        Text("Mulai Dari"),
-                        SizedBox(
+                        const Text("Mulai Dari"),
+                        const SizedBox(
                           width: 5,
                         ),
                         Text(
-                          "Rp 2,5 M",
-                          style: TextStyle(
+                          "Rp ${widget.propery.price}",
+                          style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
                           ),
@@ -208,13 +240,13 @@ class DetailPage extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Pembayaran Bulanan"),
-                        SizedBox(
+                        const Text("Pembayaran Bulanan"),
+                        const SizedBox(
                           width: 5,
                         ),
                         Text(
-                          "Rp 12,37 Jt/ Bulan",
-                          style: TextStyle(
+                          "${widget.propery.instalment} Jt/bulan",
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
                           ),
@@ -223,13 +255,13 @@ class DetailPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Divider(
+                const Divider(
                   thickness: 1,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -239,22 +271,22 @@ class DetailPage extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             "Kamar Tidur",
                           ),
                           Row(
                             children: [
                               Row(
                                 children: [
-                                  Icon(
+                                  const Icon(
                                     Icons.bed,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 5,
                                   ),
                                   Text(
-                                    "3",
-                                    style: TextStyle(
+                                    "${widget.propery.bedroom}",
+                                    style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -270,22 +302,22 @@ class DetailPage extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             "Kamar Mandi",
                           ),
                           Row(
                             children: [
                               Row(
                                 children: [
-                                  Icon(
+                                  const Icon(
                                     Icons.shower,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 5,
                                   ),
                                   Text(
-                                    "3",
-                                    style: TextStyle(
+                                    "${widget.propery.bathroom}",
+                                    style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -301,22 +333,22 @@ class DetailPage extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             "Unit",
                           ),
                           Row(
                             children: [
                               Row(
                                 children: [
-                                  Icon(
+                                  const Icon(
                                     Icons.landslide,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 5,
                                   ),
                                   Text(
-                                    "120 m2",
-                                    style: TextStyle(
+                                    "${widget.propery.area}",
+                                    style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -391,9 +423,9 @@ class DetailPage extends StatelessWidget {
                       color: Colors.grey,
                     ),
                   ),
-                  subtitle: const Text(
-                    "Rumah Dijual",
-                    style: TextStyle(
+                  subtitle: Text(
+                    "${widget.propery.type} Dijual",
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                     ),
@@ -415,9 +447,9 @@ class DetailPage extends StatelessWidget {
                       color: Colors.grey,
                     ),
                   ),
-                  subtitle: const Text(
-                    "Infinity Land",
-                    style: TextStyle(
+                  subtitle: Text(
+                    widget.propery.developer,
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                     ),
@@ -454,30 +486,30 @@ class DetailPage extends StatelessWidget {
             height: 20,
           ),
           // Tettang Properti
-          const Padding(
-            padding: EdgeInsets.symmetric(
+          Padding(
+            padding: const EdgeInsets.symmetric(
               horizontal: 20,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Tentang Properti",
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Text(
-                  "Rumah Cluster 2Lantai Didalam Perumahan Mewah Sunrise Garden Infiniti Land is contractor company since 1984 and now focus on being real estate developer, developing landed houses, apartments and shophouses",
-                  style: TextStyle(
+                  widget.propery.desc,
+                  style: const TextStyle(
                     fontSize: 14,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
               ],
