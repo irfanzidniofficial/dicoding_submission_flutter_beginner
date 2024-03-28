@@ -14,11 +14,11 @@ Rating Review : ★★★★★ (5 Stars)
 ## Preview
 
 <p align="left"> 
-<img src="https://github.com/irfanzidniofficial/dicoding_submission_flutter_beginner/blob/master/images/preview/home-screen.png" width="250"> <img src="https://github.com/irfanzidniofficial/dicoding_submission_flutter_beginner/blob/master/images/preview/home-screen.png" width="250">
+<img src="https://github.com/irfanzidniofficial/dicoding_submission_flutter_beginner/blob/main/assets/images/preview/home%20screen.png" width="200"> <img src="https://github.com/irfanzidniofficial/dicoding_submission_flutter_beginner/blob/main/assets/images/preview/drawer.png" width="200"> <img src="https://github.com/irfanzidniofficial/dicoding_submission_flutter_beginner/blob/main/assets/images/preview/detail%20screen.png" width="200"> <img src="https://github.com/irfanzidniofficial/dicoding_submission_flutter_beginner/blob/main/assets/images/preview/tablet%20preview.png" width="200"> <img src="https://github.com/irfanzidniofficial/dicoding_submission_flutter_beginner/blob/main/assets/images/preview/web%20preview.png" width="200">
 
 ## Demo
 
-- Youtube :
+- Youtube : https://www.youtube.com/watch?v=rzMCpLRGDao
 
 ## Getting Started
 
